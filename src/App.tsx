@@ -9,6 +9,7 @@ const App: FC = () => {
 		return (
 			<Canvas>
 				<ambientLight />
+				<pointLight position={[5, 5, 5]} />
 				<Box />
 			</Canvas>
 		);
@@ -23,10 +24,10 @@ const App: FC = () => {
 		});
 
 		return (
-			<Mesh ref={boxRef}>
+			<mesh ref={boxRef}>
 				<boxGeometry args={[1, 1, 1]} />
 				<meshStandardMaterial color='red' />
-			</Mesh>
+			</mesh>
 		);
 	};
 
