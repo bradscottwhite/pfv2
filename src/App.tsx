@@ -1,25 +1,40 @@
-import { useEffect, FC } from 'react';
+import { useEffect, useRef, FC } from 'react';
 import './App.css';
-import { Canvas } from 'react-three-fiber';
+import { Canvas, useFrame } from '@react-three/fiber';//'react-three-fiber';
+import { Mesh } from 'three';
 
 const App: FC = () => {
 
-	const Box = () => {
+	const ThreeScene = () => {
 		return (
-			<mesh>
-				<boxBufferGeometry attach='geometry' />
-				<meshLambertMaterial attach='material' color='hotpink' />
+			<Canvas>
+				<ambientLight />
+				<Box />
+			</Canvas>
+		);
+	};
+
+	const Box = () => {
+		const boxRef = useRef<Mesh>(null!);
+
+		useFrame(() => {
+			boxRef.current.rotation.x += 0.001;
+			boxRef.current.rotation.y += 0.01;
+		});
+
+		return (
+			<mesh ref={boxRef}>
+				<boxGeometry args={[1, 1, 1]} />
+				<meshStandardMaterial color='red' />
 			</mesh>
 		);
 	};
 
 	return (
-		<div className='App'>
+		<div className='App h-screen'>
 	
-			<Canvas>
-				<Box/>
-			</Canvas>
-
+			<ThreeScene />
+			
 			{/*<h1 className='text-red-500 text-5xl'>Bradley White</h1>
 
 			<p>

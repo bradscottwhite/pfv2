@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-canvas {
+/*canvas {
 	@apply top-0
 		left-0
 		overflow-hidden
@@ -15,10 +15,10 @@ canvas {
 		/*w-screen
 		h-screen
 		top-0
-		left-0*/
+		left-0
 
 		grid
-		/*grid-cols-4*/;
+		/*grid-cols-4;
 		grid-template-colomns: repeat(4, 1fr);
 }
 
@@ -29,4 +29,4 @@ p {
 		px-5
 		;
 		grid-colomn: 2 / 4;
-}
+}*/
