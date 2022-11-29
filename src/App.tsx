@@ -23,10 +23,10 @@ const App: FC = () => {
 		});
 
 		return (
-			<mesh ref={boxRef}>
+			<Mesh ref={boxRef}>
 				<boxGeometry args={[1, 1, 1]} />
 				<meshStandardMaterial color='red' />
-			</mesh>
+			</Mesh>
 		);
 	};
 
