@@ -1,21 +1,33 @@
 import { useEffect, useRef, FC } from 'react';
 import './App.css';
 import { Canvas, useFrame } from '@react-three/fiber';//'react-three-fiber';
+import { Plane, useTexture } from '@react-three/drei';
 import { Mesh } from 'three';
 
 const App: FC = () => {
 
-	const ThreeScene = () => {
+	const ThreeScene: FC = () => {
 		return (
 			<Canvas>
 				<ambientLight />
 				<pointLight position={[5, 5, 5]} />
 				<Box />
+				<Terrain />
 			</Canvas>
 		);
 	};
 
-	const Box = () => {
+	const Terrain: FC = () => {
+		const texture = useTexture('./background.jpeg');
+
+		return (
+			<Plane args={[10, 10]} rotation-x={-Math.PI / 2}>
+				<meshStandardMaterial map={texture} />
+			</Plane>
+		);
+	};
+
+	const Box: FC = () => {
 		const boxRef = useRef<Mesh>(null!);
 
 		useFrame(() => {
